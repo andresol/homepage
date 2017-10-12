@@ -42,7 +42,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
             <section id="banner">
               <div className="inner">
-                <h1>Sollies web</h1>
+                <h1>Sollie&apos;s web</h1>
                 <p></p>
                 <ul className="actions">
                   <li><a href="#galleries" className="button alt scrolly big">Continue</a></li>
