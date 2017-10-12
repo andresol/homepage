@@ -25,6 +25,22 @@ import LanguageProvider from 'containers/LanguageProvider';
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
+import '!file-loader?name=[name].[ext]!./images/pic01.jpg';
+import '!file-loader?name=[name].[ext]!./images/pic02.jpg';
+import '!file-loader?name=[name].[ext]!./images/banner.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/01.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/02.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/03.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/04.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/05.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/06.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/07.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/08.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/09.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/10.jpg';
+import '!file-loader?name=thumbs_[name].[ext]!./images/thumbs/strava.jpg';
+import '!file-loader?name=[name].[ext]!./images/strava.ico';
+import '!file-loader?name=[name].[ext]!./images/untappd.png';
 import '!file-loader?name=[name].[ext]!./images/icon-72x72.png';
 import '!file-loader?name=[name].[ext]!./images/icon-96x96.png';
 import '!file-loader?name=[name].[ext]!./images/icon-128x128.png';
