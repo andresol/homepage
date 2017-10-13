@@ -91,7 +91,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 </ul>
               </div>
 
-              <Quote quote={quote.text} author={quote.author} />
+              <Quote quote={quote.quote} author={quote.author} />
             </section>
 
             <footer id="footer">
