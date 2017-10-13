@@ -56,7 +56,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <section id="links">
               <div className="gallery">
                 <header className="special">
-                  <h2>Click and find</h2>
+                  <h2>Click and explore</h2>
                 </header>
                 <div className="content">
                   <div className="media">
