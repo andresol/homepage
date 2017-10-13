@@ -34,7 +34,7 @@ function appReducer(state = initialState, action) {
         .set('quote', false);
     case LOAD_QUOTE_SUCCESS:
       return state
-        .set('quote', action.quote)
+        .set('quote', action.quote.contents.quotes[0])
         .set('loading', false)
         .set('error', false);
     case LOAD_QUOTE_ERROR:

@@ -17,6 +17,7 @@ import { compose } from 'redux';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { UntappdImg } from 'components/Img';
+import Nav from 'components/Nav';
 import { createStructuredSelector } from 'reselect';
 import { loadQuote } from '../App/actions';
 
@@ -38,12 +39,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <div className="page-wrap">
-          <nav id="nav">
-            <ul>
-              <li><a href="/" className="active"><span className="icon fa-home"></span></a></li>
-              <li><a href="/strava"><span className="icon fa-bicycle"></span></a></li>
-            </ul>
-          </nav>
+          <Nav />
 
           <section id="main">
 
@@ -60,7 +56,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <section id="links">
               <div className="gallery">
                 <header className="special">
-                  <h2>Cool stuff</h2>
+                  <h2>Click and find</h2>
                 </header>
                 <div className="content">
                   <div className="media">
@@ -95,7 +91,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 </ul>
               </div>
 
-              <Quote quote={quote.text} person={quote.person} />
+              <Quote quote={quote.text} author={quote.author} />
             </section>
 
             <footer id="footer">
