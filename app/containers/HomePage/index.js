@@ -11,30 +11,37 @@
 import StravaIcon from 'components/StravaIcon';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
+import { makeSelectQuote, makeSelectLoading, makeSelectError } from 'containers/App/selectors';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { UntappdImg } from 'components/Img';
 import { createStructuredSelector } from 'reselect';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { loadQuote } from '../App/actions';
+
 import reducer from './reducer';
 import saga from './saga';
+import Quote from '../../components/Quote/index';
 
 
 export class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
+    if (typeof this.props.loadQuote === 'function') {
+      this.props.loadQuote();
+    }
   }
 
-
   render() {
+    const { quote } = this.props;
     return (
       <article>
         <div className="page-wrap">
           <nav id="nav">
             <ul>
-              <li><a href="index.html" className="active"><span className="icon fa-home"></span></a></li>
-              <li><a href="gallery.html"><span className="icon fa-camera-retro"></span></a></li>
-              <li><a href="generic.html"><span className="icon fa-file-text-o"></span></a></li>
+              <li><a href="/" className="active"><span className="icon fa-home"></span></a></li>
+              <li><a href="/strava"><span className="icon fa-bicycle"></span></a></li>
             </ul>
           </nav>
 
@@ -45,29 +52,28 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 <h1>Sollie&apos;s web</h1>
                 <p></p>
                 <ul className="actions">
-                  <li><a href="#galleries" className="button alt scrolly big">Continue</a></li>
+                  <li><a href="#links" className="button alt scrolly big">Continue</a></li>
                 </ul>
               </div>
             </section>
 
-            <section id="galleries">
-
+            <section id="links">
               <div className="gallery">
                 <header className="special">
-                  <h2>Whats happening</h2>
+                  <h2>Cool stuff</h2>
                 </header>
                 <div className="content">
                   <div className="media">
-                    <a href="strava"><img src="thumbs_strava.jpg" alt="" title="Strava" /></a>
+                    <a href="strava"><img src="thumbs_strava.jpg" alt="" title="Strava." /></a>
                   </div>
                   <div className="media">
-                    <a href="images/fulls/05.jpg"><img src="thumbs_02.jpg" alt="" title="This right here is a caption." /></a>
+                    <a href="/"><img src="thumbs_weather.png" alt="" title="Weather." /></a>
                   </div>
                   <div className="media">
-                    <a href="images/fulls/09.jpg"><img src="thumbs_05.jpg" alt="" title="This right here is a caption." /></a>
+                    <a href="/"><img src="thumbs_code.jpg" alt="" title="Coding." /></a>
                   </div>
                   <div className="media">
-                    <a href="images/fulls/02.jpg"><img src="thumbs_06.jpg" alt="" title="This right here is a caption." /></a>
+                    <a href="/"><img src="thumbs_home.jpg" alt="" title="Home." /></a>
                   </div>
                 </div>
                 <footer>
@@ -89,9 +95,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                 </ul>
               </div>
 
-              <div className="column">
-              </div>
-
+              <Quote quote={quote.text} person={quote.person} />
             </section>
 
             <footer id="footer">
@@ -106,15 +110,26 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   }
 }
 
+// We require the use of src and alt, only enforced by react in dev mode
+HomePage.propTypes = {
+  loadQuote: PropTypes.oneOfType([PropTypes.func,
+    PropTypes.object]),
+  quote: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
+};
 
-export function mapDispatchToProps() {
-  return {};
+export function mapDispatchToProps(dispatch) {
+  return {
+    loadQuote: dispatch(loadQuote()),
+  };
 }
 
 const mapStateToProps = createStructuredSelector({
-  // repos: makeSelectRepos(),
-  // loading: makeSelectLoading(),
-  // error: makeSelectError(),
+  quote: makeSelectQuote(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

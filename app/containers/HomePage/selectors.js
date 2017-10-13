@@ -1,9 +1,15 @@
-import { createSelector } from 'reselect';
+/* import { createSelector } from 'reselect'; */
 
-const makeSelectWatt = () => createSelector(
-  (homeState) => homeState.get('watt')
-);
+const selectHome = (state) => state.get('home');
+
+// const globalState = (state) => state.get('global');
+//
+// const makeSelectQuote = () => createSelector(
+//   (globalState) => globalState.get('quote')
+// );
 
 export {
-  makeSelectWatt,
+  // globalState
+  selectHome,
+//makeSelectQuote,
 };

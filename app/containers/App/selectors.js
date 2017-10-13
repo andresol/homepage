@@ -4,25 +4,21 @@ const selectRoute = (state) => state.get('route');
 
 const selectGlobal = (state) => state.get('global');
 
-const makeSelectCurrentUser = () => createSelector(
-  selectGlobal,
-  // (globalState) => globalState.get('currentUser')
-);
-
 const makeSelectLoading = () => createSelector(
   selectGlobal,
-  // (globalState) => globalState.get('loading')
+  (globalState) => globalState.get('loading'),
 );
 
 const makeSelectError = () => createSelector(
   selectGlobal,
-  // (globalState) => globalState.get('error')
+  (globalState) => globalState.get('error'),
 );
 
-const makeSelectRepos = () => createSelector(
+const makeSelectQuote = () => createSelector(
   selectGlobal,
-  // (globalState) => globalState.getIn(['userData', 'repositories'])
+  (globalState) => globalState.get('quote'),
 );
+
 
 const makeSelectLocation = () => createSelector(
   selectRoute,
@@ -31,9 +27,8 @@ const makeSelectLocation = () => createSelector(
 
 export {
   selectGlobal,
-  makeSelectCurrentUser,
   makeSelectLoading,
   makeSelectError,
-  makeSelectRepos,
   makeSelectLocation,
+  makeSelectQuote,
 };
