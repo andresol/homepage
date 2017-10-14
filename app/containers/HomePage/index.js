@@ -18,6 +18,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { UntappdImg } from 'components/Img';
 import Nav from 'components/Nav';
+import Section from 'components/Section';
 import { createStructuredSelector } from 'reselect';
 import { loadQuote } from '../App/actions';
 
@@ -43,15 +44,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
 
           <section id="main">
 
-            <section id="banner">
-              <div className="inner">
-                <h1>Sollie&apos;s web</h1>
-                <p></p>
-                <ul className="actions">
-                  <li><a href="#links" className="button alt scrolly big">Continue</a></li>
-                </ul>
-              </div>
-            </section>
+            <Section note={'Sollie\'s web'} action />
 
             <section id="links">
               <div className="gallery">

@@ -10,10 +10,10 @@ export const Quote = ({ quote, author }) => (
     <h3>Quote of the day</h3>
     <p>{quote}</p>
     <p>- {author}</p>
-    <p>
+    <div>
       <div>Created by They Said</div>
       <div>So See more at <a href="https://theysaidso.com/api">https://theysaidso.com/api</a></div>
-    </p>
+    </div>
   </div>
 );
 
