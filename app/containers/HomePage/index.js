@@ -71,7 +71,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             <section id="contact">
               <div className="social column">
                 <h3>About Me</h3>
-                <p>A house in Ekeberg, a java web developer trying new stuff.</p>
+                <p>A house in Ekeberg, a java web developer trying new stuff, this is the result.</p>
                 <p>React, java, nodejs, varnish, nginx...beer...cycling</p>
                 <h3>Follow Me</h3>
                 <ul className="icons">

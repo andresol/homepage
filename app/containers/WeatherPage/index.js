@@ -6,7 +6,7 @@ const Weather = () => (
   <div className="page-wrap">
     <Nav index={2} />
     <section id="main">
-      <StravaSection note={'Strava'} action={false} />
+      <StravaSection note={'Live weather'} action={false} />
       <section id="athlets">
         <div>
           <p>Vær info</p>

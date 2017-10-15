@@ -6,7 +6,7 @@ const Coding = () => (
   <div className="page-wrap">
     <Nav index={3} />
     <section id="main">
-      <StravaSection note={'Strava'} action={false} />
+      <StravaSection note={'Coding'} action={false} />
       <section id="athlets">
         <div>
           <p>Vær info</p>

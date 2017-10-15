@@ -12,6 +12,16 @@ const Strava = () => (
           <p>Kommer mer</p>
         </div>
       </section>
+      <section id="athlet">
+        <h2>Andre Sollie</h2>
+        <div className="stat">
+          <p>Kommer mer</p>
+        </div>
+        <div className="Segments">
+          <p>Kommer mer</p>
+        </div>
+      </section>
+
     </section>
   </div>
 );
