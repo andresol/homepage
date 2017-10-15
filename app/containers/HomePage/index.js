@@ -40,7 +40,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
     return (
       <article>
         <div className="page-wrap">
-          <Nav />
+          <Nav index={0} />
 
           <section id="main">
 
@@ -56,18 +56,15 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
                     <a href="strava"><img src="thumbs_strava.jpg" alt="" title="Strava." /></a>
                   </div>
                   <div className="media">
-                    <a href="/"><img src="thumbs_weather.png" alt="" title="Weather." /></a>
+                    <a href="weather"><img src="thumbs_weather.png" alt="" title="Weather." /></a>
                   </div>
                   <div className="media">
-                    <a href="/"><img src="thumbs_code.jpg" alt="" title="Coding." /></a>
+                    <a href="coding"><img src="thumbs_code.jpg" alt="" title="Coding." /></a>
                   </div>
                   <div className="media">
-                    <a href="/"><img src="thumbs_home.jpg" alt="" title="Home." /></a>
+                    <a href="/house"><img src="thumbs_home.jpg" alt="" title="Home." /></a>
                   </div>
                 </div>
-                <footer>
-                  <a href="gallery.html" className="button big">Full Gallery</a>
-                </footer>
               </div>
             </section>
 

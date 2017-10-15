@@ -8,15 +8,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Img from './Img';
 
-const icon = ({ to, src }) => (<Link className="" to={to}><span className="icon"><Img src={src} alt="Strava" /></span></Link>);
+const Icon = ({ to, src }) => (<Link className="" to={to}><span className="icon"><Img src={src} alt="Strava" /></span></Link>);
 
 const
-  StravaIcon = styled(icon)`
+  StravaIcon = styled(Icon)`
 `;
 
 
 // We require the use of src and alt, only enforced by react in dev mode
-icon.propTypes = {
+Icon.propTypes = {
   to: PropTypes.string,
   src: PropTypes.string,
 };

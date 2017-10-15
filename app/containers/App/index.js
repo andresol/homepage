@@ -15,7 +15,10 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import Strava from 'containers/Strava/Loadable';
+import Strava from 'containers/StravaPage/Loadable';
+import Weather from 'containers/WeatherPage/Loadable';
+import Coding from 'containers/CodingPage/Loadable';
+import House from 'containers/HousePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 export default function App() {
@@ -24,6 +27,9 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/strava" component={Strava} />
+        <Route exact path="/weather" component={Weather} />
+        <Route exact path="/coding" component={Coding} />
+        <Route exact path="/house" component={House} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

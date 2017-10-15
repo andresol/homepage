@@ -2,18 +2,18 @@ import React from 'react';
 import Nav from 'components/Nav';
 import StravaSection from 'components/Strava/Section';
 
-const Strava = () => (
+const Weather = () => (
   <div className="page-wrap">
-    <Nav />
+    <Nav index={2} />
     <section id="main">
       <StravaSection note={'Strava'} action={false} />
       <section id="athlets">
         <div>
-          <p>Kommer mer</p>
+          <p>Vær info</p>
         </div>
       </section>
     </section>
   </div>
 );
 
-export default Strava;
+export default Weather;
