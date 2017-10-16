@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Athlet from './Athlet';
 
-export const Athlets = ({ list }) => (
+export const Athlets = ({ athlets }) => (
   <section id="athlets">
-    {list.map((x) =>
-      <Athlet key={x.id} name={x.name} id={x.id} />
+    {athlets.map((a) =>
+      <Athlet key={a.id} name={a.name} id={a.id} />
     )}
   </section>
 );
 
 Athlets.propTypes = {
-  list: PropTypes.array.isRequired,
+  athlets: PropTypes.array.isRequired,
 };
 
 Athlets.defaultProps = {
-  name: '',
+  athlets: [],
 };
 
 export default Athlets;

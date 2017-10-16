@@ -21,7 +21,13 @@ import {
 const initialState = fromJS({
   loading: false,
   error: false,
-  athlet: { id: '131220', name: 'Andre Sollie', koms: [] },
+  athlets: [
+    { id: '131220', name: 'Sollie' },
+    { id: '131218', name: 'Vondouce Erikstad' },
+    { id: '981568', name: 'Eddy The boss' },
+    { id: '119909', name: 'Per The Machine Allan' },
+  ],
+  athlet: { id: '131220', name: 'Andre Sollie' },
 });
 
 function stravaPageReducer(state = initialState, action) {

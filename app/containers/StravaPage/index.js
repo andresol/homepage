@@ -10,7 +10,7 @@ import StravaSection from 'components/Strava/Section';
 import Athlet from 'components/Strava/Athlet';
 import Athlets from 'components/Strava/Athlets';
 
-import { makeSelectAthlet, makeSelectLoading, makeSelectError } from './selectors';
+import { makeSelectAthlet, makeSelectAthlets, makeSelectLoading, makeSelectError } from './selectors';
 import { loadAthlet } from './actions';
 import Segments from '../../components/Strava/Segments/index';
 import reducer from './reducer';
@@ -26,14 +26,14 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
   }
 
   render() {
-    const { athlet } = this.props;
+    const { athlet, athlets } = this.props;
     return (
       <article>
         <div className="page-wrap">
           <Nav index={1} />
           <section id="main">
             <StravaSection note={'Strava'} action={false} />
-            <Athlets list={[athlet]} />
+            <Athlets athlets={athlets} />
             <Athlet {...athlet} />
             <Segments koms={athlet.koms} />
           </section>
@@ -52,6 +52,7 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
 StravaPage.propTypes = {
   loadKoms: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
+  athlets: PropTypes.array,
   athlet: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.bool,
@@ -68,6 +69,7 @@ const mapStateToProps = createStructuredSelector({
   athlet: makeSelectAthlet(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
+  athlets: makeSelectAthlets(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

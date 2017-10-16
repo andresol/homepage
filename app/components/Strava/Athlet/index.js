@@ -12,12 +12,12 @@ export const Athlet = ({ name, koms }) => (
 
 Athlet.propTypes = {
   name: PropTypes.string.isRequired,
-  koms: PropTypes.number.isRequired,
+  koms: PropTypes.array.isRequired,
 };
 
 Athlet.defaultProps = {
   name: '',
-  koms: 0,
+  koms: [],
 };
 
 export default Athlet;
