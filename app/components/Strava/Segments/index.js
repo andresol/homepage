@@ -15,7 +15,7 @@ export const Segments = ({ list }) => (
       </thead>
       <tbody>
         {list.map((x) =>
-          <Segment key={x.id} name={x.name} rating={x.rating} />
+          <Segment key={x.id} name={x.name} rating={3} />
         )}
       </tbody>
     </Table>
@@ -27,6 +27,7 @@ Segments.propTypes = {
 };
 
 Segments.defaultProps = {
+  list: [],
 };
 
 export default Segments;

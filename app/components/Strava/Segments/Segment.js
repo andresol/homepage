@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Segment = ({ id, name, rating }) => (
-  <tr data-id={id}><td>{name}</td> <td>{rating}</td></tr>
+  <tr data-id={id}><td>{name}</td><td>{rating}</td></tr>
 );
 
 Segment.propTypes = {
