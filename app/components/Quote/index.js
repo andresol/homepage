@@ -1,7 +1,3 @@
-/*
-Created by They Said So
-See more at https://theysaidso.com/api*/
-
 import React from 'react';
 import PropTypes from 'prop-types';
 

@@ -1,27 +1,18 @@
 import React from 'react';
 import Nav from 'components/Nav';
 import StravaSection from 'components/Strava/Section';
+import Athlet from 'components/Strava/Athlet';
+import Athlets from 'components/Strava/Athlets';
+import Segments from '../../components/Strava/Segments/index';
 
 const Strava = () => (
   <div className="page-wrap">
     <Nav index={1} />
     <section id="main">
       <StravaSection note={'Strava'} action={false} />
-      <section id="athlets">
-        <div>
-          <p>Kommer mer</p>
-        </div>
-      </section>
-      <section id="athlet">
-        <h2>Andre Sollie</h2>
-        <div className="stat">
-          <p>Kommer mer</p>
-        </div>
-        <div className="Segments">
-          <p>Kommer mer</p>
-        </div>
-      </section>
-
+      <Athlets list={[{ name: 'Andre Sollie', id: '131220' }]} />
+      <Athlet />
+      <Segments list={[{ name: 'Muur Ekeberg', id: '131220', rating: 4 }]} />
     </section>
   </div>
 );
