@@ -16,7 +16,6 @@ Athlets.propTypes = {
 
 Athlets.defaultProps = {
   name: '',
-
 };
 
 export default Athlets;

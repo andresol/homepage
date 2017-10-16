@@ -21,7 +21,7 @@ import {
 const initialState = fromJS({
   loading: false,
   error: false,
-  athlet: false,
+  athlet: { id: '131220', name: 'Andre Sollie', koms: [] },
 });
 
 function stravaPageReducer(state = initialState, action) {
@@ -29,18 +29,16 @@ function stravaPageReducer(state = initialState, action) {
     case LOAD_ATHLET:
       return state
         .set('loading', true)
-        .set('error', false)
-        .set('athlet', false);
+        .set('error', false);
     case LOAD_ATHLET_SUCCESS:
       return state
-        .set('athlet', action.athlet)
+        .setIn(['athlet', 'koms'], action.athlet)
         .set('loading', false)
         .set('error', false);
     case LOAD_ATHLET_ERROR:
       return state
         .set('error', action.error)
-        .set('loading', false)
-        .set('athlet', false);
+        .set('loading', false);
     default:
       return state;
   }

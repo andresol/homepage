@@ -4,7 +4,7 @@ import Table from 'components/Table';
 import Segment from './Segment';
 
 
-export const Segments = ({ list }) => (
+export const Segments = ({ koms }) => (
   <section id="segments">
     <Table>
       <thead>
@@ -14,7 +14,7 @@ export const Segments = ({ list }) => (
         </tr>
       </thead>
       <tbody>
-        {list.map((x) =>
+        {koms.map((x) =>
           <Segment key={x.id} name={x.name} rating={3} />
         )}
       </tbody>
@@ -23,11 +23,11 @@ export const Segments = ({ list }) => (
 );
 
 Segments.propTypes = {
-  list: PropTypes.array.isRequired,
+  koms: PropTypes.array.isRequired,
 };
 
 Segments.defaultProps = {
-  list: [],
+  koms: [],
 };
 
 export default Segments;

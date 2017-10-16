@@ -5,7 +5,7 @@ export const Athlet = ({ name, koms }) => (
   <section id="athlet">
     <h2>{name}</h2>
     <div className="stat">
-      <div>Antall KOM: <span>{koms}</span></div>
+      <div>Antall KOM: <span>{koms.length}</span></div>
     </div>
   </section>
 );

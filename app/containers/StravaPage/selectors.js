@@ -1,25 +1,23 @@
 import { createSelector } from 'reselect';
 
-const selectGlobal = (state) => state.get('global');
-
+const selectStrava = (state) => state.get('strava');
 
 const makeSelectLoading = () => createSelector(
-  selectGlobal,
+  selectStrava,
   (stravaState) => stravaState.get('loading'),
 );
 
 const makeSelectError = () => createSelector(
-  selectGlobal,
+  selectStrava,
   (stravaState) => stravaState.get('error'),
 );
 
 const makeSelectAthlet = () => createSelector(
-  selectGlobal,
-  (stravaState) => stravaState.get('athlet'),
+  selectStrava,
+  (stravaState) => stravaState.get('athlet').toJS(),
 );
 
 export {
-  selectGlobal,
   makeSelectLoading,
   makeSelectError,
   makeSelectAthlet,

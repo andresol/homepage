@@ -20,8 +20,8 @@ import saga from './saga';
 export class StravaPage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
-    if (typeof this.props.loadAthlet === 'function') {
-      this.props.loadAthlet();
+    if (typeof this.props.loadKoms === 'function') {
+      this.props.loadKoms();
     }
   }
 
@@ -33,9 +33,9 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
           <Nav index={1} />
           <section id="main">
             <StravaSection note={'Strava'} action={false} />
-            <Athlets list={[{ name: 'Andre Sollie', id: '131220' }]} />
-            <Athlet />
-            <Segments list={athlet} />
+            <Athlets list={[athlet]} />
+            <Athlet {...athlet} />
+            <Segments koms={athlet.koms} />
           </section>
         </div>
         <footer id="footer">
@@ -50,7 +50,7 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
 
 // We require the use of src and alt, only enforced by react in dev mode
 StravaPage.propTypes = {
-  loadAthlet: PropTypes.oneOfType([PropTypes.func,
+  loadKoms: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
   athlet: PropTypes.oneOfType([
     PropTypes.object,
@@ -60,12 +60,12 @@ StravaPage.propTypes = {
 
 export function mapDispatchToProps(dispatch) {
   return {
-    loadQuote: dispatch(loadAthlet()),
+    loadAthlet: dispatch(loadAthlet()),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  quote: makeSelectAthlet(),
+  athlet: makeSelectAthlet(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
