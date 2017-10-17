@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Action from './Action';
+import StyledSection from './StyledSection';
 
 const Section = ({ note, action }) => (
-  <section id="banner">
+  <StyledSection id="banner">
     <div className="inner">
       <h1>{note}</h1>
       { action ? <Action /> : ''}
     </div>
-  </section>
+  </StyledSection>
 );
 
 

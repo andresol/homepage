@@ -32,7 +32,7 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
         <div className="page-wrap">
           <Nav index={1} />
           <section id="main">
-            <StravaSection note={'Strava'} action={false} />
+            <StravaSection className={'strava-banner'} note={'Strava'} action={false} />
             <Athlets athlets={athlets} action={this.props.onChangeAthletId} />
             <Athlet {...athlet} />
             <Segments koms={athlet.koms} />
