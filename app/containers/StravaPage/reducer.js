@@ -12,9 +12,9 @@
 import { fromJS } from 'immutable';
 
 import {
-  LOAD_ATHLET,
-  LOAD_ATHLET_SUCCESS,
-  LOAD_ATHLET_ERROR,
+  LOAD_KOMS,
+  LOAD_KOMS_SUCCESS,
+  LOAD_KOMS_ERROR,
   CHANGE_ATHLET_ID,
 } from './constants';
 
@@ -36,19 +36,19 @@ const initialState = fromJS({
 
 function stravaPageReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_ATHLET:
+    case LOAD_KOMS:
       return state
         .set('loading', true)
         .set('error', false);
-    case LOAD_ATHLET_SUCCESS:
+    case LOAD_KOMS_SUCCESS:
       return state
         .setIn(['athlet', 'id'], action.athletId)
         .setIn(['athlet', 'name'], athlets[action.athletId].name)
-        .setIn(['athlet', 'koms'], action.athlet)
+        .setIn(['athlet', 'koms'], action.koms)
         .set('athletId', action.athletId)
         .set('loading', false)
         .set('error', false);
-    case LOAD_ATHLET_ERROR:
+    case LOAD_KOMS_ERROR:
       return state
         .set('error', action.error)
         .set('loading', false);

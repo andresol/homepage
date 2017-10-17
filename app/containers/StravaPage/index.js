@@ -11,7 +11,7 @@ import Athlet from 'components/Strava/Athlet';
 import Athlets from 'components/Strava/Athlets';
 
 import { makeSelectAthlet, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId } from './selectors';
-import { loadAthlet, changeAthletId } from './actions';
+import { loadKoms, changeAthletId } from './actions';
 import Segments from '../../components/Strava/Segments/index';
 import reducer from './reducer';
 import saga from './saga';
@@ -65,9 +65,9 @@ export function mapDispatchToProps(dispatch) {
     onChangeAthletId: (evt) => {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(changeAthletId(evt.target.value));
-      dispatch(loadAthlet());
+      dispatch(loadKoms());
     },
-    loadAthlet: dispatch(loadAthlet()),
+    loadKoms: dispatch(loadKoms()),
   };
 }
 

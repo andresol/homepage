@@ -1,20 +1,20 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { LOAD_ATHLET } from './constants';
-import { athletLoaded, athletLoadingError } from './actions';
+import { LOAD_KOMS } from './constants';
+import { komsLoaded, komsLoadingError } from './actions';
 import { makeSelectAthletId } from './selectors';
 /**
  * Github repos request/response handler
  */
-export function* getAthlet() {
+export function* getKoms() {
   const athletId = yield select(makeSelectAthletId());
   const requestURL = `http://www.sollie.info/api/strava/koms/${athletId}`;
   try {
-    const athlet = yield call(request, requestURL);
-    yield put(athletLoaded(athlet, athletId));
+    const koms = yield call(request, requestURL);
+    yield put(komsLoaded(koms, athletId));
   } catch (err) {
-    yield put(athletLoadingError(err));
+    yield put(komsLoadingError(err));
   }
 }
 
@@ -27,5 +27,5 @@ export default function* stravaPageData() {
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
   // yield takeLatest(LOAD_REPOS, getRepos);
-  yield takeLatest(LOAD_ATHLET, getAthlet);
+  yield takeLatest(LOAD_KOMS, getKoms);
 }

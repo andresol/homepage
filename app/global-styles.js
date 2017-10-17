@@ -1465,6 +1465,12 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
     text-align: center;
     color: #FFF;
   }
+  
+  #banner.small {
+    padding: 4em 0 3em 0;
+    min-height: 8vh;
+    height: 8vh;
+  }
 
     #banner:before {
       -moz-transition: opacity 3s ease;

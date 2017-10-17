@@ -9,7 +9,7 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-export const LOAD_ATHLET = 'sollieweb/StravaPage/LOAD_ATHLET';
-export const LOAD_ATHLET_SUCCESS = 'sollieweb/StravaPage/LOAD_ATHLET_SUCCESS';
-export const LOAD_ATHLET_ERROR = 'sollieweb/StravaPage/LOAD_ATHLET_ERROR';
+export const LOAD_KOMS = 'sollieweb/StravaPage/LOAD_KOMS';
+export const LOAD_KOMS_SUCCESS = 'sollieweb/StravaPage/LOAD_KOMS_SUCCESS';
+export const LOAD_KOMS_ERROR = 'sollieweb/StravaPage/LOAD_KOMS_ERROR';
 export const CHANGE_ATHLET_ID = 'sollieweb/StravaPage/CHANGE_ATHLET_ID';

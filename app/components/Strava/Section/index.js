@@ -4,7 +4,7 @@ import Action from 'components/Section/Action';
 import React from 'react';
 
 const Section = ({ note, action }) => (
-  <section id="banner" className="strava-banner">
+  <section id="banner" className="small">
     <div className="inner">
       <h1>{note}</h1>
       { action ? <Action /> : ''}
