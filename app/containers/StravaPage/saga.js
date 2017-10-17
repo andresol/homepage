@@ -1,16 +1,18 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { LOAD_ATHLET } from './constants';
 import { athletLoaded, athletLoadingError } from './actions';
+import { makeSelectAthletId } from './selectors';
 /**
  * Github repos request/response handler
  */
 export function* getAthlet() {
-  const requestURL = 'http://www.sollie.info/api/strava/koms/131220';
+  const athletId = yield select(makeSelectAthletId());
+  const requestURL = `http://www.sollie.info/api/strava/koms/${athletId}`;
   try {
     const athlet = yield call(request, requestURL);
-    yield put(athletLoaded(athlet));
+    yield put(athletLoaded(athlet, athletId));
   } catch (err) {
     yield put(athletLoadingError(err));
   }

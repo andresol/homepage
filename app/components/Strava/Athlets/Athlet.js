@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Athlet = ({ id, name, action }) => (
-  <li data-id={id}><button onClick={action}>{name}</button></li>
+  <li><button onClick={action} value={id}>{name}</button></li>
 );
 
 Athlet.propTypes = {

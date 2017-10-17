@@ -10,8 +10,8 @@ import StravaSection from 'components/Strava/Section';
 import Athlet from 'components/Strava/Athlet';
 import Athlets from 'components/Strava/Athlets';
 
-import { makeSelectAthlet, makeSelectAthlets, makeSelectLoading, makeSelectError } from './selectors';
-import { loadAthlet } from './actions';
+import { makeSelectAthlet, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId } from './selectors';
+import { loadAthlet, changeAthletId } from './actions';
 import Segments from '../../components/Strava/Segments/index';
 import reducer from './reducer';
 import saga from './saga';
@@ -33,7 +33,7 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
           <Nav index={1} />
           <section id="main">
             <StravaSection note={'Strava'} action={false} />
-            <Athlets athlets={athlets} />
+            <Athlets athlets={athlets} action={this.props.onChangeAthletId} />
             <Athlet {...athlet} />
             <Segments koms={athlet.koms} />
           </section>
@@ -52,15 +52,21 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
 StravaPage.propTypes = {
   loadKoms: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
-  athlets: PropTypes.array,
+  athlets: PropTypes.array.isRequired,
   athlet: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.bool,
   ]),
+  onChangeAthletId: PropTypes.func,
 };
 
 export function mapDispatchToProps(dispatch) {
   return {
+    onChangeAthletId: (evt) => {
+      if (evt !== undefined && evt.preventDefault) evt.preventDefault();
+      dispatch(changeAthletId(evt.target.value));
+      dispatch(loadAthlet());
+    },
     loadAthlet: dispatch(loadAthlet()),
   };
 }
@@ -70,6 +76,7 @@ const mapStateToProps = createStructuredSelector({
   loading: makeSelectLoading(),
   error: makeSelectError(),
   athlets: makeSelectAthlets(),
+  athletId: makeSelectAthletId(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

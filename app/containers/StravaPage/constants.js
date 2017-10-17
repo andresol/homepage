@@ -12,3 +12,4 @@
 export const LOAD_ATHLET = 'sollieweb/StravaPage/LOAD_ATHLET';
 export const LOAD_ATHLET_SUCCESS = 'sollieweb/StravaPage/LOAD_ATHLET_SUCCESS';
 export const LOAD_ATHLET_ERROR = 'sollieweb/StravaPage/LOAD_ATHLET_ERROR';
+export const CHANGE_ATHLET_ID = 'sollieweb/StravaPage/CHANGE_ATHLET_ID';

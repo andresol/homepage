@@ -16,9 +16,15 @@ const makeSelectAthlet = () => createSelector(
   selectStrava,
   (stravaState) => stravaState.get('athlet').toJS(),
 );
+
 const makeSelectAthlets = () => createSelector(
   selectStrava,
   (stravaState) => stravaState.get('athlets').toJS(),
+);
+
+const makeSelectAthletId = () => createSelector(
+  selectStrava,
+  (stravaState) => stravaState.get('athletId'),
 );
 
 
@@ -27,4 +33,5 @@ export {
   makeSelectError,
   makeSelectAthlet,
   makeSelectAthlets,
+  makeSelectAthletId,
 };
