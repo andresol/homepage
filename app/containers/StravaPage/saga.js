@@ -1,8 +1,8 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { LOAD_KOMS } from './constants';
-import { komsLoaded, komsLoadingError } from './actions';
+import { LOAD_KOMS, LOAD_ATHLET } from './constants';
+import { komsLoaded, komsLoadingError, athletLoaded, athletLoadingError } from './actions';
 import { makeSelectAthletId } from './selectors';
 /**
  * Github repos request/response handler
@@ -18,6 +18,17 @@ export function* getKoms() {
   }
 }
 
+export function* getAthlet() {
+  const athletId = yield select(makeSelectAthletId());
+  const requestURL = `http://www.sollie.info/api/strava/athlet/${athletId}`;
+  try {
+    const athlet = yield call(request, requestURL);
+    yield put(athletLoaded(athlet, athletId));
+  } catch (err) {
+    yield put(athletLoadingError(err));
+  }
+}
+
 /**
  * Root saga manages watcher lifecycle
  */
@@ -28,4 +39,5 @@ export default function* stravaPageData() {
   // It will be cancelled automatically on component unmount
   // yield takeLatest(LOAD_REPOS, getRepos);
   yield takeLatest(LOAD_KOMS, getKoms);
+  yield takeLatest(LOAD_ATHLET, getAthlet);
 }
