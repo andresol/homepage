@@ -10,8 +10,8 @@ import StravaSection from 'components/Strava/Section';
 import Athlet from 'components/Strava/Athlet';
 import Athlets from 'components/Strava/Athlets';
 
-import { makeSelectAthlet, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId } from './selectors';
-import { loadKoms, changeAthletId } from './actions';
+import { makeSelectKoms, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId } from './selectors';
+import { loadKoms, changeAthletId, loadAthlets } from './actions';
 import Segments from '../../components/Strava/Segments/index';
 import reducer from './reducer';
 import saga from './saga';
@@ -21,12 +21,15 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
 
   componentDidMount() {
     if (typeof this.props.loadKoms === 'function') {
+      this.props.loadAthlets();
+    }
+    if (typeof this.props.loadKoms === 'function') {
       this.props.loadKoms();
     }
   }
 
   render() {
-    const { athlet, athlets } = this.props;
+    const { athlets, koms, athletId } = this.props;
     return (
       <article>
         <div className="page-wrap">
@@ -34,8 +37,8 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
           <section id="main">
             <StravaSection className={'strava-banner'} note={'Strava'} action={false} />
             <Athlets athlets={athlets} action={this.props.onChangeAthletId} />
-            <Athlet {...athlet} />
-            <Segments koms={athlet.koms} />
+            <Athlet athlet={athlets[athletId]} koms={koms[athletId]} />
+            <Segments koms={koms[athletId]} />
           </section>
         </div>
         <footer id="footer">
@@ -52,12 +55,16 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
 StravaPage.propTypes = {
   loadKoms: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
-  athlets: PropTypes.array.isRequired,
-  athlet: PropTypes.oneOfType([
+  athlets: PropTypes.object.isRequired,
+  onChangeAthletId: PropTypes.func,
+  loadAthlets: PropTypes.oneOfType([PropTypes.func,
+    PropTypes.object]),
+  koms: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.bool,
   ]),
-  onChangeAthletId: PropTypes.func,
+  athletId: PropTypes.oneOfType([PropTypes.number.isRequired,
+    PropTypes.string.isRequired]),
 };
 
 export function mapDispatchToProps(dispatch) {
@@ -68,15 +75,16 @@ export function mapDispatchToProps(dispatch) {
       dispatch(loadKoms());
     },
     loadKoms: dispatch(loadKoms()),
+    loadAthlets: dispatch(loadAthlets()),
   };
 }
 
 const mapStateToProps = createStructuredSelector({
-  athlet: makeSelectAthlet(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
   athlets: makeSelectAthlets(),
   athletId: makeSelectAthletId(),
+  koms: makeSelectKoms(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

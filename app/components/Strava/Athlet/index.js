@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Athlet = ({ name, koms }) => (
+export const Athlet = ({ athlet, koms }) => (
   <section id="athlet">
-    <h2>{name}</h2>
+    <h2>{athlet.name}</h2>
     <div className="stat">
       <div>Antall KOM: <span>{koms.length}</span></div>
     </div>
@@ -11,12 +11,12 @@ export const Athlet = ({ name, koms }) => (
 );
 
 Athlet.propTypes = {
-  name: PropTypes.string.isRequired,
+  athlet: PropTypes.object.isRequired,
   koms: PropTypes.array.isRequired,
 };
 
 Athlet.defaultProps = {
-  name: '',
+  athlet: {},
   koms: [],
 };
 

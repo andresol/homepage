@@ -6,14 +6,14 @@ export const Athlet = ({ id, name, action }) => (
 );
 
 Athlet.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired,
 };
 
 Athlet.defaultProps = {
   name: '',
-  id: '',
+  id: 0,
   action: () => {},
 };
 

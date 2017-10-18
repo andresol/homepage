@@ -17,6 +17,7 @@
 
 import {
   LOAD_KOMS, LOAD_KOMS_ERROR, LOAD_KOMS_SUCCESS, CHANGE_ATHLET_ID, LOAD_ATHLET, LOAD_ATHLET_SUCCESS, LOAD_ATHLET_ERROR,
+  LOAD_ATHLETS,
 } from './constants';
 
 /**
@@ -27,6 +28,12 @@ import {
 export function loadKoms() {
   return {
     type: LOAD_KOMS,
+  };
+}
+
+export function loadAthlets() {
+  return {
+    type: LOAD_ATHLETS,
   };
 }
 

@@ -21,20 +21,17 @@ import {
   CHANGE_ATHLET_ID,
 } from './constants';
 
-const athlets = {
-  131220: { id: '131220', name: 'Sollie', koms: [], profile: '' },
-  131218: { id: '131218', name: 'Vondouce Erikstad', koms: [], profile: '' },
-  981568: { id: '981568', name: 'Eddy The boss', koms: [], profile: '' },
-  119909: { id: '119909', name: 'Per The Machine Allan', koms: [], profile: '' },
-};
+const DEFAULT_ATHLET_ID = [131220, 131218, 981568, 119909];
 
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
   error: false,
-  athlets: Object.values(athlets),
-  athlet: athlets['131220'],
+  athlets: {},
+  koms: {},
+  athlet: {},
   athletId: 131220,
+  defaultAthlets: DEFAULT_ATHLET_ID,
 });
 
 function stravaPageReducer(state = initialState, action) {
@@ -45,18 +42,13 @@ function stravaPageReducer(state = initialState, action) {
         .set('error', false);
     case LOAD_KOMS_SUCCESS:
       return state
-        .setIn(['athlet', 'id'], action.athletId)
-        .setIn(['athlet', 'name'], athlets[action.athletId].name)
-        .setIn(['athlet', 'koms'], action.koms)
+        .setIn(['koms', action.athletId], action.koms)
         .set('athletId', action.athletId)
         .set('loading', false)
         .set('error', false);
     case LOAD_ATHLET_SUCCESS:
       return state
-        .setIn(['athlet', 'id'], action.athlet.id)
-        .setIn(['athlet', 'name'], `${action.athlet.firstname} ${action.athlet.lastname}`)
-        .setIn(['athlet', 'profile'], action.athlet.profile)
-        .setIn(['athlet', 'koms'], action.koms)
+        .setIn(['athlets', action.athletId], action.athlet)
         .set('athletId', action.athletId)
         .set('loading', false)
         .set('error', false);
@@ -66,7 +58,8 @@ function stravaPageReducer(state = initialState, action) {
         .set('loading', false);
     case CHANGE_ATHLET_ID:
       return state
-        .set('athletId', action.athletId);
+        .set('athletId', action.athletId)
+        .set('athlet', state.get(action.athletId));
     default:
       return state;
   }

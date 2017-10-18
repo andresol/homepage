@@ -16,11 +16,11 @@ import { Switch, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
 import HomePage from 'containers/HomePage/Loadable';
-import Strava from 'containers/StravaPage/Loadable';
-import Weather from 'containers/WeatherPage/Loadable';
-import Coding from 'containers/CodingPage/Loadable';
-import House from 'containers/HousePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import StravaPage from 'containers/StravaPage/index';
+import WeatherPage from 'containers/WeatherPage/index';
+import CodingPage from 'containers/CodingPage/index';
+import HousePage from 'containers/HousePage/index';
+import NotFoundPage from 'containers/NotFoundPage/index';
 
 ReactGA.initialize('UA-108142565-1');
 
@@ -34,10 +34,10 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" onUpdate={logPageView} component={HomePage} />
-        <Route exact path="/strava" onUpdate={logPageView} component={Strava} />
-        <Route exact path="/weather" onUpdate={logPageView} component={Weather} />
-        <Route exact path="/coding" onUpdate={logPageView} component={Coding} />
-        <Route exact path="/house" onUpdate={logPageView} component={House} />
+        <Route exact path="/strava" onUpdate={logPageView} component={StravaPage} />
+        <Route exact path="/weather" onUpdate={logPageView} component={WeatherPage} />
+        <Route exact path="/coding" onUpdate={logPageView} component={CodingPage} />
+        <Route exact path="/house" onUpdate={logPageView} component={HousePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
