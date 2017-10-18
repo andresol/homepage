@@ -1582,6 +1582,113 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
         }
 
       }
+      
+      /* Image */
+
+	.image {
+		border-radius: 0;
+		border: 0;
+		display: inline-block;
+		position: relative;
+	}
+
+		.image img {
+			border-radius: 0;
+			display: block;
+		}
+
+		.image.left, .image.right {
+			max-width: 40%;
+		}
+
+			.image.left img, .image.right img {
+				width: 100%;
+			}
+
+		.image.round img {
+			border-radius: 100%;
+		}
+
+		.image.left {
+			float: left;
+			padding: 0 1.5em 1em 0;
+			top: 0.25em;
+		}
+
+		.image.right {
+			float: right;
+			padding: 0 0 1em 1.5em;
+			top: 0.25em;
+		}
+
+		.image.fit {
+			display: block;
+			margin: 0 0 2em 0;
+			width: 100%;
+		}
+
+			.image.fit img {
+				width: 100%;
+			}
+
+		.image.main {
+			display: block;
+			margin: 0 0 3em 0;
+			width: 100%;
+		}
+
+			.image.main img {
+				width: 100%;
+			}
+
+/** Athlets */
+  #athlets {
+    background: #5385c1;
+	  color: #bacee6;
+    min-height: 8vh;
+  }
+  
+  #athlets .box {
+    width: 21%;
+    display: inline;
+    text-align: center;
+  }
+  
+  .box.athlet .image {
+	  margin-bottom: 1em;
+	}
+
+	.box.athlet .image img {
+	  max-width: 100%;
+	}
+  
+  #athlets.wrapper > .inner{
+    width: 100em;
+  }
+  
+  #athlets .box.athlet {
+			border: solid 1px rgba(255, 255, 255, 0.25);
+			padding: 3em 1.5em;
+			margin: 1em;
+			display: inline-block;
+	}
+  
+  .box.athlet button {
+    display: block;
+    margin: auto;
+  }
+  
+  #athlet li {
+      display: inline;
+  }
+  
+  @media screen and (max-width: 480px) {
+
+			#athlets .box {
+				width: 100%;
+			}
+
+		}
 
 /* Footer */
 
