@@ -9,7 +9,7 @@ import { makeSelectAthletId, makeSelectDefaultAthlets } from './selectors';
  */
 export function* getKoms() {
   const athletId = yield select(makeSelectAthletId());
-  const requestURL = `http://www.sollie.info/api/strava/koms/${athletId}`;
+  const requestURL = `https://www.sollie.info/api/strava/koms/${athletId}`;
   try {
     const koms = yield call(request, requestURL);
     yield put(komsLoaded(koms, athletId));
@@ -20,7 +20,7 @@ export function* getKoms() {
 
 export function* getAthlet() {
   const athletId = yield select(makeSelectAthletId());
-  const requestURL = `http://www.sollie.info/api/strava/athlet/${athletId}`;
+  const requestURL = `https://www.sollie.info/api/strava/athlet/${athletId}`;
   try {
     const athlet = yield call(request, requestURL);
     yield put(athletLoaded(athlet, athletId));
@@ -33,7 +33,7 @@ export function* getAthlets() {
   const athlets = yield select(makeSelectDefaultAthlets());
   for (let i = 0, len = athlets.length; i < len; i += 1) {
     const athletId = athlets[i];
-    const requestURL = `http://www.sollie.info/api/strava/athlet/${athletId}`;
+    const requestURL = `https://www.sollie.info/api/strava/athlet/${athletId}`;
     try {
       const athlet = yield call(request, requestURL);
       yield put(athletLoaded(athlet, athletId));
