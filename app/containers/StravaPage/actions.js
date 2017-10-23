@@ -17,7 +17,7 @@
 
 import {
   LOAD_KOMS, LOAD_KOMS_ERROR, LOAD_KOMS_SUCCESS, CHANGE_ATHLET_ID, LOAD_ATHLET, LOAD_ATHLET_SUCCESS, LOAD_ATHLET_ERROR,
-  LOAD_ATHLETS,
+  LOAD_ATHLETS, LOAD_ATHLET_STATS_ERROR, LOAD_ATHLET_STATS_SUCCESS, LOAD_ATHLETS_STATS,
 } from './constants';
 
 /**
@@ -28,6 +28,12 @@ import {
 export function loadKoms() {
   return {
     type: LOAD_KOMS,
+  };
+}
+
+export function loadAthletStats() {
+  return {
+    type: LOAD_ATHLETS_STATS,
   };
 }
 
@@ -73,6 +79,14 @@ export function athletLoaded(athlet, athletId) {
   };
 }
 
+export function athletStatsLoaded(stats, athletId) {
+  return {
+    type: LOAD_ATHLET_STATS_SUCCESS,
+    stats,
+    athletId,
+  };
+}
+
 
 /**
  * Dispatched when loading the repositories fails
@@ -94,3 +108,11 @@ export function athletLoadingError(error) {
     error,
   };
 }
+
+export function athletStatsLoadingError(error) {
+  return {
+    type: LOAD_ATHLET_STATS_ERROR,
+    error,
+  };
+}
+

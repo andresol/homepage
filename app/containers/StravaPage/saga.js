@@ -2,7 +2,7 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { LOAD_KOMS, LOAD_ATHLET, LOAD_ATHLETS } from './constants';
-import { komsLoaded, komsLoadingError, athletLoaded, athletLoadingError } from './actions';
+import { komsLoaded, komsLoadingError, athletLoaded, athletLoadingError, athletStatsLoaded, athletStatsLoadingError } from './actions';
 import { makeSelectAthletId, makeSelectDefaultAthlets } from './selectors';
 /**
  * Github repos request/response handler
@@ -15,6 +15,17 @@ export function* getKoms() {
     yield put(komsLoaded(koms, athletId));
   } catch (err) {
     yield put(komsLoadingError(err));
+  }
+}
+
+export function* getAthletStats() {
+  const athletId = yield select(makeSelectAthletId());
+  const requestURL = `https://www.sollie.info/api/strava/athlet/${athletId}/stats`;
+  try {
+    const stats = yield call(request, requestURL);
+    yield put(athletStatsLoaded(stats, athletId));
+  } catch (err) {
+    yield put(athletStatsLoadingError(err));
   }
 }
 

@@ -17,3 +17,6 @@ export const LOAD_ATHLET_SUCCESS = 'sollieweb/StravaPage/LOAD_ATHLET_SUCCESS';
 export const LOAD_ATHLET_ERROR = 'sollieweb/StravaPage/LOAD_ATHLET_ERROR';
 export const LOAD_ATHLETS = 'sollieweb/StravaPage/LOAD_ATHLET';
 export const CHANGE_ATHLET_ID = 'sollieweb/StravaPage/CHANGE_ATHLET_ID';
+export const LOAD_ATHLET_STATS_ERROR = 'sollieweb/StravaPage/LOAD_ATHLET_STATS_ERROR';
+export const LOAD_ATHLET_STATS_SUCCESS = 'sollieweb/StravaPage/LOAD_ATHLET_STATS_SUCCESS';
+export const LOAD_ATHLETS_STATS = 'sollieweb/StravaPage/LOAD_ATHLETS_STATS';

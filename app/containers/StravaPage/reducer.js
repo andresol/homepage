@@ -19,6 +19,9 @@ import {
   LOAD_ATHLET_ERROR,
   LOAD_ATHLET,
   CHANGE_ATHLET_ID,
+  LOAD_ATHLETS_STATS,
+  LOAD_ATHLET_STATS_ERROR,
+  LOAD_ATHLET_STATS_SUCCESS,
 } from './constants';
 
 const DEFAULT_ATHLET_ID = [131220, 131218, 981568, 119909];
@@ -29,6 +32,7 @@ const initialState = fromJS({
   error: false,
   athlets: {},
   koms: {},
+  stats: {},
   athlet: {},
   athletId: 131220,
   defaultAthlets: DEFAULT_ATHLET_ID,
@@ -36,7 +40,7 @@ const initialState = fromJS({
 
 function stravaPageReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_KOMS: case LOAD_ATHLET:
+    case LOAD_KOMS: case LOAD_ATHLET: case LOAD_ATHLETS_STATS:
       return state
         .set('loading', true)
         .set('error', false);
@@ -52,7 +56,13 @@ function stravaPageReducer(state = initialState, action) {
         .set('athletId', action.athletId)
         .set('loading', false)
         .set('error', false);
-    case LOAD_KOMS_ERROR: case LOAD_ATHLET_ERROR:
+    case LOAD_ATHLET_STATS_SUCCESS:
+      return state
+        .setIn(['stats', action.athletId], action.stats)
+        .set('athletId', action.athletId)
+        .set('loading', false)
+        .set('error', false);
+    case LOAD_KOMS_ERROR: case LOAD_ATHLET_ERROR: case LOAD_ATHLET_STATS_ERROR:
       return state
         .set('error', action.error)
         .set('loading', false);

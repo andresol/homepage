@@ -1467,7 +1467,7 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
   }
   
   #banner.small {
-    padding: 4em 0 3em 0;
+    padding: 6em 0 5em 0;
     min-height: 8vh;
     height: 8vh;
   }
