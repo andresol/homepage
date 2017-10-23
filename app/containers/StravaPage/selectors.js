@@ -17,6 +17,11 @@ const makeSelectKoms = () => createSelector(
   (stravaState) => stravaState.get('koms').toJS(),
 );
 
+const makeSelectStats = () => createSelector(
+  selectStrava,
+  (stravaState) => stravaState.get('stats').toJS(),
+);
+
 const makeSelectAthlets = () => createSelector(
   selectStrava,
   (stravaState) => stravaState.get('athlets').toJS(),
@@ -27,12 +32,10 @@ const makeSelectDefaultAthlets = () => createSelector(
   (stravaState) => stravaState.get('defaultAthlets').toJS(),
 );
 
-
 const makeSelectAthletId = () => createSelector(
   selectStrava,
   (stravaState) => stravaState.get('athletId'),
 );
-
 
 export {
   makeSelectLoading,
@@ -41,4 +44,5 @@ export {
   makeSelectAthlets,
   makeSelectAthletId,
   makeSelectDefaultAthlets,
+  makeSelectStats,
 };

@@ -15,7 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
 
-import HomePage from 'containers/HomePage/Loadable';
+import HomePage from 'containers/HomePage/index';
 import StravaPage from 'containers/StravaPage/index';
 import WeatherPage from 'containers/WeatherPage/index';
 import CodingPage from 'containers/CodingPage/index';

@@ -10,8 +10,9 @@ import StravaSection from 'components/Strava/Section';
 import Athlet from 'components/Strava/Athlet';
 import Athlets from 'components/Strava/Athlets';
 
-import { makeSelectKoms, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId } from './selectors';
-import { loadKoms, changeAthletId, loadAthlets } from './actions';
+import { makeSelectKoms, makeSelectAthlets, makeSelectLoading, makeSelectError, makeSelectAthletId,
+  makeSelectStats } from './selectors';
+import { loadKoms, changeAthletId, loadAthlets, loadAthletStats } from './actions';
 import Segments from '../../components/Strava/Segments/index';
 import reducer from './reducer';
 import saga from './saga';
@@ -26,10 +27,13 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
     if (typeof this.props.loadKoms === 'function') {
       this.props.loadKoms();
     }
+    if (typeof this.props.loadAthletStats === 'function') {
+      this.props.loadAthletStats();
+    }
   }
 
   render() {
-    const { athlets, koms, athletId } = this.props;
+    const { athlets, koms, stats, athletId } = this.props;
     return (
       <article>
         <div className="page-wrap">
@@ -37,7 +41,7 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
           <section id="main">
             <StravaSection className={'strava-banner'} note={'Strava'} action={false} />
             <Athlets athlets={athlets} action={this.props.onChangeAthletId} />
-            <Athlet athlet={athlets[athletId]} koms={koms[athletId]} />
+            <Athlet athlet={athlets[athletId]} koms={koms[athletId]} stats={stats[athletId]} />
             <Segments koms={koms[athletId]} />
           </section>
         </div>
@@ -59,7 +63,13 @@ StravaPage.propTypes = {
   onChangeAthletId: PropTypes.func,
   loadAthlets: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
+  loadAthletStats: PropTypes.oneOfType([PropTypes.func,
+    PropTypes.object]),
   koms: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.bool,
+  ]),
+  stats: PropTypes.oneOfType([
     PropTypes.object,
     PropTypes.bool,
   ]),
@@ -76,6 +86,7 @@ export function mapDispatchToProps(dispatch) {
     },
     loadKoms: dispatch(loadKoms()),
     loadAthlets: dispatch(loadAthlets()),
+    loadAthletStats: dispatch(loadAthletStats()),
   };
 }
 
@@ -85,6 +96,7 @@ const mapStateToProps = createStructuredSelector({
   athlets: makeSelectAthlets(),
   athletId: makeSelectAthletId(),
   koms: makeSelectKoms(),
+  stats: makeSelectStats(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

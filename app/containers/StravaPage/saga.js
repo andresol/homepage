@@ -1,7 +1,7 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { LOAD_KOMS, LOAD_ATHLET, LOAD_ATHLETS } from './constants';
+import { LOAD_KOMS, LOAD_ATHLET, LOAD_ATHLETS, LOAD_ATHLETS_STATS } from './constants';
 import { komsLoaded, komsLoadingError, athletLoaded, athletLoadingError, athletStatsLoaded, athletStatsLoadingError } from './actions';
 import { makeSelectAthletId, makeSelectDefaultAthlets } from './selectors';
 /**
@@ -66,4 +66,5 @@ export default function* stravaPageData() {
   yield takeLatest(LOAD_KOMS, getKoms);
   yield takeLatest(LOAD_ATHLET, getAthlet);
   yield takeLatest(LOAD_ATHLETS, getAthlets);
+  yield takeLatest(LOAD_ATHLETS_STATS, getAthletStats);
 }
