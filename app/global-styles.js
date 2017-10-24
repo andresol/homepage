@@ -1643,7 +1643,6 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
 
 /** Athlets */
   #athlets {
-    background: #5385c1;
 	  color: #bacee6;
     min-height: 8vh;
   }
@@ -1652,6 +1651,7 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
     width: 21%;
     display: inline;
     text-align: center;
+    background: #EEEEEE;
   }
   
   .box.athlet .image {
@@ -1667,7 +1667,7 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
   }
   
   #athlets .box.athlet {
-			border: solid 1px rgba(255, 255, 255, 0.25);
+			border: solid 1px rgba(83, 133, 193, 0.25);
 			padding: 3em 1.5em;
 			margin: 1em;
 			display: inline-block;
@@ -1689,6 +1689,18 @@ injectGlobal`html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, 
 			}
 
 		}
+		
+/* Athlet */
+  #athlet	{
+    padding-left: 4.1em;
+    padding-right: 3.5em;
+   }	
+   
+/* Segments */
+  #segments	{
+    padding-left: 3.5em;
+    padding-right: 3.5em;
+  }	
 
 /* Footer */
 

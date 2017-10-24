@@ -55,7 +55,6 @@ export class StravaPage extends React.PureComponent { // eslint-disable-line rea
   }
 }
 
-// We require the use of src and alt, only enforced by react in dev mode
 StravaPage.propTypes = {
   loadKoms: PropTypes.oneOfType([PropTypes.func,
     PropTypes.object]),
@@ -83,6 +82,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(changeAthletId(evt.target.value));
       dispatch(loadKoms());
+      dispatch(loadAthletStats());
     },
     loadKoms: dispatch(loadKoms()),
     loadAthlets: dispatch(loadAthlets()),

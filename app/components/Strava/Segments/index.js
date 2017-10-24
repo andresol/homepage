@@ -15,7 +15,7 @@ export const Segments = ({ koms }) => (
       </thead>
       <tbody>
         {koms.map((x) =>
-          <Segment key={x.id} name={x.name} rating={3} />
+          <Segment key={x.id} id={x.segment.id} name={x.name} rating={3} />
         )}
       </tbody>
     </Table>
